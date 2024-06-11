@@ -6,6 +6,12 @@ FileStorage module for AirBnB clone project.
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
+
+classes = {
+    "BaseModel": BaseModel,
+    "User": User
+}
 
 
 class FileStorage:
@@ -36,6 +42,6 @@ class FileStorage:
                 obj_dict = json.load(f)
                 for key, value in obj_dict.items():
                     cls_name = value['__class__']
-                    cls = globals().get(cls_name)
+                    cls = classes.get(cls_name)
                     if cls:
                         self.__objects[key] = cls(**value)

@@ -5,9 +5,13 @@ Command interpreter for managing AirBnB objects.
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 
-classes = {"BaseModel": BaseModel}
+classes = {
+    "BaseModel": BaseModel,
+    "User": User
+}
 
 
 class HBNBCommand(cmd.Cmd):
